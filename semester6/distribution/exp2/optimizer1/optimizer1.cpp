@@ -2,6 +2,7 @@
 #include <math.h>
 #include <stdio.h>
 #include<stdlib.h>
+#include <string.h> 
 #define MIN(a,b)  ((a)<(b)?(a):(b))
 #define LL long long
 #define ODD(a) (a * 2 + 1)
