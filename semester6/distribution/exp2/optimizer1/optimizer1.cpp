@@ -5,11 +5,11 @@
 #include <string.h> 
 #define MIN(a,b)  ((a)<(b)?(a):(b))
 #define LL long long
-#define ODD(a) (a * 2 + 1)
+#define ODD(a) (a * 2 - 1)
 
 int main(int argc, char* argv[])
 {
-	LL    count=0;        /* Local non-prime count */
+    LL    count=0;        /* Local non-prime count */
     double elapsed_time; /* Parallel execution time */
     LL    first;        /* Index of first multiple */
     LL    global_count=0; /* Global non-prime count in odds from 5 to n*/
@@ -84,12 +84,12 @@ int main(int argc, char* argv[])
         else if(!((prime-(low_value % prime))%2))first = (prime-(low_value % prime))/2;
         else first = (prime * 2 - (low_value % prime))/2;
         for(i = first; i < size; i += prime){
-            marked[i] = 1;
-            count++;
+           if(!marked[i])++count; 
+	   marked[i] = 1;
         }
         if(!id){
             while(marked[++index]);
-            prime = index * 2 + 5;
+            prime = index * 2 + 3;
         }
         if (p > 1) MPI_Bcast(&prime, 1, MPI_INT, 0, MPI_COMM_WORLD);
     }while(prime * prime <= n);
