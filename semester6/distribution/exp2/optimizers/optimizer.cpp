@@ -3,7 +3,6 @@
 #include <stdio.h>
 #include<stdlib.h>
 #include <string.h>
-
 #define MIN(a, b)  ((a)<(b)?(a):(b))
 #define LL long long
 #define ODD(a) (a * 2 - 1)
@@ -100,7 +99,7 @@ int main(int argc, char *argv[]) {
         for (i = first_0; i < size_0; i += prime) {
             shared_marked[i] = 1;
         }
-        while (marked[++index]);
+        while (shared_marked[++index]);
         prime = index * 2 + 3;
     } while (prime * prime <= n);
     MPI_Reduce(&count, &global_count, 1, MPI_INT, MPI_SUM,
